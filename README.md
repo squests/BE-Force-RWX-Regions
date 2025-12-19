@@ -15,12 +15,12 @@ After resolving, it will store it in the GOT. On first time execution of these e
 ## Practicality
 ANYWAYS so what does that even have to do with anything? The idea is that if we can overwrite the GOT table with addresses we want and ALSO make the GOT executable, we get a win.
 ## Preparation
-The three libc functions we will be examining are GETS, PUTS, and MPROTECT. The argument architecture is listed below.\
+**The three libc functions we will be examining are GETS, PUTS, and MPROTECT. The argument architecture is listed below.\**
 char \*gets(char \*s);\
 int puts( const char\* str );\
 int mprotect(void addr, size_t size, int prot);\
-Even though there is a very quick win through simply a pop rdi; ret gadget, leak of aslr address through puts, and then ret2system, we will be focusing on making sections RWX with mprotect.\
-Our controlled flow of the program will be so:\
+_Even though there is a very quick win through simply a pop rdi; ret gadget, leak of aslr address through puts, and then ret2system, we will be focusing on making sections RWX with mprotect.\_
+**Our controlled flow of the program will be so:\**
 pop rdi; ret gadget of puts got address\
 call puts to leak aslr\
 pop rdi; ret gadget of puts got address\
@@ -28,7 +28,7 @@ call GETS to write to puts got address --> we will be overwritting both puts and
 pop rdi; ret gadget\
 pop rsi; ret gadget\
 pop rdx; ret gadget in libc\
-call mprotect using aslr bypass leak\
+call mprotect using aslr bypass leak\  
 To summary, we're calling puts initially to leak the PUTS GOT entry to defeat ASLR\
 Calling GETS to overwrite both PUTS and GETS GOT entry with the pop rdx, and mprotect addresses calculated by ASLR Base + Offset of pop rdx and mprotect procedures.\
 Calling mprotect after prepping rdi, rsi, and rdx.\
