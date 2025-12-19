@@ -28,7 +28,7 @@ call GETS to write to puts got address --> we will be overwritting both puts and
 pop rdi; ret gadget\
 pop rsi; ret gadget\
 pop rdx; ret gadget in libc\
-call mprotect using aslr bypass leak\  
+call mprotect using aslr bypass leak\
 To summary, we're calling puts initially to leak the PUTS GOT entry to defeat ASLR\
 Calling GETS to overwrite both PUTS and GETS GOT entry with the pop rdx, and mprotect addresses calculated by ASLR Base + Offset of pop rdx and mprotect procedures.\
 Calling mprotect after prepping rdi, rsi, and rdx.\
