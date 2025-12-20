@@ -8,8 +8,8 @@ Force RWX GOT section for shellcode execution by libc's built in procedure, mpro
 The PLT and GOT table are the basis to linking external libraries to your main binary on execution. System, printf, fgets, fputs, etc are libc procedures. These procedures aren't a part of the binary on compilation time, as each file that
 uses libc or any other external libraries would be massive. The idea is to load in these external libraries on runtime in virtual memory. This saves a lot of storage space and also allows other programs to access the same libc libraries as well.
 The PLT's job is to resolve the addresses to jump to when calling libc functions. The GOT section may contain the addresses of the libc functions already, saving a lot of the PLT's job. So whenever system is called, it first goes to the PLT to see if
-the GOT already has this address resolved, and if it is it simply jumps to that address. Otherwise, the PLT itself resolves it through ld.so and puts it in the GOT.
-<img width="921" height="190" alt="image" src="https://github.com/user-attachments/assets/03aa497d-26cc-4da8-9309-c791e3417610" />
+the GOT already has this address resolved, and if it is it simply jumps to that address. Otherwise, the PLT itself resolves it through ld.so and puts it in the GOT.\
+<img width="921" height="190" alt="image" src="https://github.com/user-attachments/assets/03aa497d-26cc-4da8-9309-c791e3417610" />\
 In this example, we can see that the PLT resolution jumps to the GOT entry. If the GOT does not contain the address of the libc location of GETS yet, then it will jump back to 0x401046, and then continue execution from there, which is the PLT resolving the address.
 After resolving, it will store it in the GOT. On first time execution of these external functions, they will always resolve through the PLT first and then inserted into the GOT.
 ## Practicality
