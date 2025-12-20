@@ -57,3 +57,14 @@ pop rdx (oversimplified); ret\
 call mprotect\
 Our second payload after running gets will contain the following:\
 Calculated addr gadget pop rdx + Calculated addr of mprotect.
+## This payload can be examined in the python file under this repository.
+## After resolving all of the addresses and making the payload yourself, it should look like this
+### Before:
+<img width="1418" height="662" alt="image" src="https://github.com/user-attachments/assets/c6abc55f-4d02-4109-8a62-d0f19fd84a35" />
+### After:
+<img width="1433" height="648" alt="image" src="https://github.com/user-attachments/assets/d203aab6-59d8-4a3e-b599-1f6e638ee131" />
+### Notes
+This was done under machine:
+Linux Ubuntu 6.14.0-36-generic #36~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Wed Oct 15 15:45:17 UTC 2 x86_64 x86_64 x86_64 GNU/Linux
+My libc vers will be in this repository as well.
+
