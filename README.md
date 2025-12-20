@@ -61,6 +61,7 @@ Calculated addr gadget pop rdx + Calculated addr of mprotect.
 ## After resolving all of the addresses and making the payload yourself, it should look like this
 ### Before:
 <img width="1418" height="662" alt="image" src="https://github.com/user-attachments/assets/c6abc55f-4d02-4109-8a62-d0f19fd84a35" />
+
 ### After:
 <img width="1433" height="648" alt="image" src="https://github.com/user-attachments/assets/d203aab6-59d8-4a3e-b599-1f6e638ee131" />
 ### Notes
