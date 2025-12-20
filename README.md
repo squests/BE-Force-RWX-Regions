@@ -64,7 +64,8 @@ Calculated addr gadget pop rdx + Calculated addr of mprotect.
 
 ### After:
 <img width="1433" height="648" alt="image" src="https://github.com/user-attachments/assets/d203aab6-59d8-4a3e-b599-1f6e638ee131" />
-### Notes
+
+### Notes:
 This was done under machine:
 Linux Ubuntu 6.14.0-36-generic #36~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Wed Oct 15 15:45:17 UTC 2 x86_64 x86_64 x86_64 GNU/Linux
 My libc vers will be in this repository as well.
